@@ -1,0 +1,82 @@
+html {
+  background-color: #f5f5f5;
+}
+
+.header {
+  margin: 0 auto;
+  max-width: 42em;
+}
+
+.header .title {
+  font-size: 1.75rem;
+  color: #495060;
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 42em;
+}
+
+.main .description {
+  font-size: 1.25rem;
+  color: #495060;
+}
+
+.in-file-upload-container {
+  background: #fff;
+  width: 340px;
+  height: 200px;
+  border-radius: 10px;
+  border: 1px dashed #d9d9d9;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border .2s;
+}
+
+.in-file-upload-container:hover {
+  border: 1px dashed #03a9f4;
+}
+
+.in-file-upload-container.in-file-upload-dragger{
+  border: 3px solid #03a9f4;
+}
+
+.in-file-upload-dragger .in-file-upload-icon{
+  margin-top: 38px;
+}
+
+.in-file-upload-icon {
+  font-size: 67px;
+  color: rgb(51, 153, 255);
+  margin-top: 40px;
+  display: inline-block;
+  transition: margin .2s;
+}
+
+.in-file-upload-container > div {
+  color: #495060;
+  font-size: 14px;
+}
+
+.in-file-upload-container > div span {
+  color: rgb(51, 153, 255);
+  font-size: 14px;
+}
+
+.in-file-upload-result {
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  width: 340px;
+  max-height: 200px;
+  font-size: 14px;
+  color: #495060;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  overflow: hidden;
+  word-break: break-all;
+  cursor: pointer;
+}
