@@ -2,9 +2,7 @@ let uploadBtn = document.querySelector('.in-file-upload-btn'),
     uploadContainer = document.querySelector('.in-file-upload-container'),
     uploadResult = document.querySelector('.in-file-upload-result')
 
-uploadBtn.addEventListener('change', (e) => {
-  let files = e.target.files
-
+let fileRead = (files) => {
   if (files.length) {
     let file = files[0], reader = new FileReader()
 
@@ -13,6 +11,12 @@ uploadBtn.addEventListener('change', (e) => {
       uploadResult.innerHTML = e.target.result
     }
   }
+}
+
+uploadBtn.addEventListener('change', (e) => {
+  let files = e.target.files
+
+  fileRead(files)
 })
 
 uploadContainer.addEventListener('click', () => {
@@ -34,18 +38,11 @@ uploadContainer.addEventListener('dragover', (e) => {
 uploadContainer.addEventListener('drop', (e) => {
   e.stopPropagation()
   e.preventDefault()
-  uploadContainer.classList.remove('in-file-upload-dragger')
 
   let files = e.dataTransfer.files
 
-  if (files.length) {
-    let file = files[0], reader = new FileReader()
-    
-    reader.readAsDataURL(file)
-    reader.onload = function(e) {
-      uploadResult.innerHTML = e.target.result
-    }
-  }
+  fileRead(files)
+  uploadContainer.classList.remove('in-file-upload-dragger')
 })
 
 uploadResult.addEventListener('copy', (e) => {
@@ -54,5 +51,10 @@ uploadResult.addEventListener('copy', (e) => {
 })
 
 uploadResult.addEventListener('click', (e) => {
+  let selection = window.getSelection(),
+      range = document.createRange()
+
+  range.selectNode(uploadResult)
+  selection.addRange(range)
   document.execCommand('copy')
 })
