@@ -7,6 +7,7 @@ let fileRead = (files) => {
     let file = files[0], reader = new FileReader()
 
     reader.readAsDataURL(file)
+
     reader.onload = (e) => {
       uploadResult.innerHTML = e.target.result
     }
@@ -21,19 +22,29 @@ uploadBtn.addEventListener('change', (e) => {
 
 uploadContainer.addEventListener('click', () => {
   uploadBtn.click()
-})
+}, false)
+
+uploadContainer.addEventListener('dragenter', (e) => {
+  e.preventDefault()
+  e.stopPropagation()
+  
+  if (!uploadContainer.contains(e.relatedTarget))
+    uploadContainer.classList.add('in-file-upload-dragger')
+}, false)
 
 uploadContainer.addEventListener('dragleave', (e) => {
   e.preventDefault()
   e.stopPropagation()
-  uploadContainer.classList.remove('in-file-upload-dragger')
-})
+
+  if (!uploadContainer.contains(e.relatedTarget))
+    uploadContainer.classList.remove('in-file-upload-dragger')
+}, false)
+
 
 uploadContainer.addEventListener('dragover', (e) => {
   e.preventDefault()
   e.stopPropagation()
-  uploadContainer.classList.add('in-file-upload-dragger')
-}, false);
+}, false)
 
 uploadContainer.addEventListener('drop', (e) => {
   e.stopPropagation()
@@ -48,7 +59,7 @@ uploadContainer.addEventListener('drop', (e) => {
 uploadResult.addEventListener('copy', (e) => {
   e.preventDefault()
   e.clipboardData.setData('Text', uploadResult.innerText)
-})
+}, false)
 
 uploadResult.addEventListener('click', (e) => {
   let selection = window.getSelection(),
@@ -57,4 +68,4 @@ uploadResult.addEventListener('click', (e) => {
   range.selectNode(uploadResult)
   selection.addRange(range)
   document.execCommand('copy')
-})
+}, false)

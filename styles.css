@@ -37,7 +37,7 @@ html {
   text-align: center;
   box-sizing: border-box;
   cursor: pointer;
-  transition: border .2s;
+  transition: border .1s;
 }
 
 .in-file-upload-container:hover {
@@ -57,7 +57,7 @@ html {
   font-size: 67px;
   color: rgb(51, 153, 255);
   display: inline-block;
-  transition: margin .2s;
+  transition: margin .1s;
 }
 
 .in-file-upload-container > div {
